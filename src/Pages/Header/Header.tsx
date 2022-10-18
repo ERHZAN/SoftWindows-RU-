@@ -129,6 +129,21 @@ const Header: React.FC = () => {
             document.body.style.overflow = 'visible'
             menuMobileRef.current.style.left = '-100%'
         }
+        DropList1.current.style.display === 'block'
+        ? DropList1.current.style.display = 'none'
+        : DropList1.current.style.display = 'none'
+
+        arrow.current.style.transform === 'rotate(45deg)'
+        ? arrow.current.style.transform = 'rotate(45deg)'
+        : arrow.current.style.transform = 'rotate(45deg)'
+
+        arrow.current.style.marginBottom === '1%'
+        ? arrow.current.style.marginBottom = '1%'
+        : arrow.current.style.marginBottom = '1%'
+
+        arrow.current.style.marginTop === '1%'
+        ? arrow.current.style.marginTop = '1%'
+        : arrow.current.style.marginTop = '1%'
     }
 
     const MenuMobile = styled.div`
@@ -204,17 +219,12 @@ const Header: React.FC = () => {
         }
     `
 
-    let rotate
-    DropList1.current !== undefined && DropList1.current.style.maxHeight === '0px'
-    ? rotate = 'transform: rotate(45deg); -webkit-transform: rotate(45deg); margin-bottom: 1%;'
-    : rotate = 'transform: rotate(-135deg); -webkit-transform: rotate(-135deg); margin-top: 1%;'
 
     const HeaderDroplistBtnArrow = styled.span`
         display: inline-block;
         border: solid #fff;
         border-width: 0 2px 2px 0;
         padding: 3px;
-        ${rotate}
     `
 
     return (
@@ -297,18 +307,6 @@ const Header: React.FC = () => {
                 <WrappedMobileMenuLinksDiv>
                     <WrappedButton
                         onClick={() => {
-                            DropList1.current.style.display === 'none'
-                            ? DropList1.current.style.display = 'block'
-                            : DropList1.current.style.display = 'none'
-
-                            DropList1.current.style.maxHeight === '0px'
-                            ? DropList1.current.style.maxHeight = '100%'
-                            : DropList1.current.style.maxHeight = 0
-                    
-                            DropList1.current.style.maxHeight === '100%'
-                            ? DropList1.current.style.opacity = '1'
-                            : DropList1.current.style.opacity = 0
-
                             arrow.current.style.transform === 'rotate(45deg)'
                             ? arrow.current.style.transform = 'rotate(-135deg)'
                             : arrow.current.style.transform = 'rotate(45deg)'
@@ -320,6 +318,22 @@ const Header: React.FC = () => {
                             arrow.current.style.marginTop === '1%'
                             ? arrow.current.style.marginTop = 0
                             : arrow.current.style.marginTop = '1%'
+
+                            DropList1.current.style.display === 'none'
+                            ? DropList1.current.style.display = 'block'
+                            : setTimeout(() => {
+                                DropList1.current.style.display = 'none'
+                            }, 500)
+
+                            setTimeout(() => {
+                                DropList1.current.style.maxHeight === '0px'
+                                ? DropList1.current.style.maxHeight = '100%'
+                                : DropList1.current.style.maxHeight = 0
+
+                                DropList1.current.style.opacity === '0'
+                                ? DropList1.current.style.opacity = 1
+                                : DropList1.current.style.opacity = 0
+                            }, 10)
                         }}
                     >
                         <span>Мягкие окна</span>
@@ -330,7 +344,7 @@ const Header: React.FC = () => {
                     </WrappedButton>
                     <WrappedMobileMenuLinkDroplist
                         ref={DropList1}
-                        style={{display: 'none', opacity: 0, maxHeight: 0}}
+                        style={{display: 'none', maxHeight: 0, opacity: 0}}
                     >
                         <WrappedMobileMenuLinkDroplist>
                             <NavLink to={'/for-alcoves'}>
