@@ -152,6 +152,7 @@ const Header: React.FC = () => {
     const DropList1: any = useRef()
     const burgerMenuMobile: any = useRef()
     const menuMobileRef: any = useRef()
+    const arrow: any = useRef()
 
     const closeDropList1 = () => {
         window.scrollTo(0, 0)
@@ -307,12 +308,30 @@ const Header: React.FC = () => {
                             DropList1.current.style.maxHeight === '100%'
                             ? DropList1.current.style.opacity = '1'
                             : DropList1.current.style.opacity = 0
+
+                            arrow.current.style.transform === 'rotate(45deg)'
+                            ? arrow.current.style.transform = 'rotate(-135deg)'
+                            : arrow.current.style.transform = 'rotate(45deg)'
+
+                            arrow.current.style.marginBottom === '1%'
+                            ? arrow.current.style.marginBottom = 0
+                            : arrow.current.style.marginBottom = '1%'
+
+                            arrow.current.style.marginTop === '1%'
+                            ? arrow.current.style.marginTop = 0
+                            : arrow.current.style.marginTop = '1%'
                         }}
                     >
                         <span>Мягкие окна</span>
-                        <HeaderDroplistBtnArrow />
+                        <HeaderDroplistBtnArrow
+                            ref={arrow}
+                            style={{transform: 'rotate(45deg)', marginBottom: '1%', marginTop: 0}}
+                        />
                     </WrappedButton>
-                    <WrappedMobileMenuLinkDroplist ref={DropList1} style={{display: 'none', opacity: 0, maxHeight: 0}}>
+                    <WrappedMobileMenuLinkDroplist
+                        ref={DropList1}
+                        style={{display: 'none', opacity: 0, maxHeight: 0}}
+                    >
                         <WrappedMobileMenuLinkDroplist>
                             <NavLink to={'/for-alcoves'}>
                                 <WrappedenuMobileDroplistText
